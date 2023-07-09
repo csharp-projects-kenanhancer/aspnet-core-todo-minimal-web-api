@@ -1,0 +1,11 @@
+### All Todos
+curl https://localhost:7225/todoitems
+
+### Completed Todos
+curl https://localhost:7225/todoitems/complete
+
+### Create Todo
+curl -X POST -H "Content-Type: application/json" -d '{"name":"walk dog","isComplete":true}' https://localhost:7225/todoitems
+
+### Update Todo
+curl -X PUT -H "Content-Type: application/json" -d '{"name":"walk dog", "isComplete":false}' https://localhost:7225/todoitems/1
