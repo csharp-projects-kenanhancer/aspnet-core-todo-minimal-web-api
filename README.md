@@ -13,6 +13,8 @@ dotnet build
 dotnet run
 ```
 
+> Update port number in curl requests after running project. You can find it in Debug Console
+
 ## All Todos
 ```shell
 curl https://localhost:7225/todoitems
