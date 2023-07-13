@@ -1,11 +1,34 @@
-### All Todos
-curl https://localhost:7225/todoitems
+### Fetches all todos
+curl https://localhost:7235/todos
 
-### Completed Todos
-curl https://localhost:7225/todoitems/complete
+### Fetches completed todos
+curl https://localhost:7235/todos/completed
+
+### Fetches incomplete todos
+curl https://localhost:7235/todos/incomplete
+
+### Get todo by id
+curl https://localhost:7235/todos/33333333-3333-3333-3333-333333333333
 
 ### Create Todo
-curl -X POST -H "Content-Type: application/json" -d '{"name":"walk dog","isComplete":true}' https://localhost:7225/todoitems
+
+@newTodoName = "walk dog"
+@newTodoIsComplete = true
+
+# @name createTodo
+
+curl -X POST -H "Content-Type: application/json" -d '{"name":{{newTodoName}},"isComplete":{{newTodoIsComplete}}}' https://localhost:7235/todos
 
 ### Update Todo
-curl -X PUT -H "Content-Type: application/json" -d '{"name":"walk dog", "isComplete":false}' https://localhost:7225/todoitems/1
+
+@todoId = {{createTodo.response.body.id}}
+
+# @name replaceTodo
+curl -X PUT -H "Content-Type: application/json" -d '{"name":{{newTodoName}}, "isComplete":false}' https://localhost:7235/todos/{{todoId}}
+
+### Delete Todo
+
+@todoId = {{createTodo.response.body.id}}
+
+# @name replaceTodo
+curl -X DELETE https://localhost:7235/todos/{{todoId}}
